@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>teamable application</title>
+        <link rel="stylesheet" href="style.css" />
+        <script>
+            function getdatafromlocalStorage() {
+                const name1 = localStorage.getItem("Name");
+        
+                document.getElementById("new name").textContent = name1;
+            }
+            window.onload = getdatafromlocalStorage;
+
+            function editProfile() {
+                document.getElementById("display-view").style.display= "none" 
+                document.getElementById("edit-view").style.display= "block"
+            }
+
+            function getBacktodisplayview() {
+                const edit_name = document.getElementById("edit-view-name").value;
+                localStorage.setItem("Name", edit_name);
+                document.getElementById("edit-view").style.display= "none"
+                document.getElementById("display-view").style.display= "block"
+            }
+            
+
+        </script>
+    </head>
+    <body>
+        <div id="display-view">
+            <h1>User Profile</h1>
+            <img src="profile-1.jpg"/>
+
+            <span>Name:</span><b id="new name">Loading...</b>
+            <hr />
+            <button onclick="editProfile()">Edit-Profile</button>
+        </div>
+        <div id="edit-view">
+            <h1>User Profile</h1>
+            <img src="profile-1.jpg"/>
+
+            <span>Name:</span><input type="text" id="edit-view-name" placeholder="..."/>
+            <hr />
+            <button onclick="getBacktodisplayview()">save-Profile</button>
+        </div>
+
+    </body>
+</html>
